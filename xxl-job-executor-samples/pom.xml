@@ -3,11 +3,12 @@
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.xuxueli</groupId>
-        <artifactId>xxl-job</artifactId>
-        <version>2.1.1-SNAPSHOT</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
     </parent>
     <artifactId>xxl-job-executor-samples</artifactId>
+    <version>2.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -18,5 +19,4 @@
         <module>xxl-job-executor-sample-frameless</module>
 		<module>xxl-job-executor-sample-jboot</module>
     </modules>
-
 </project>

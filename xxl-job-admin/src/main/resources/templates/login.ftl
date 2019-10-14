@@ -9,7 +9,7 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a><b>XXL</b>JOB</a>
+			<a><b>数据交换平台</b>任务调度中心</a>
 		</div>
 		<form id="loginForm" method="post" >
 			<div class="login-box-body">
