@@ -8,6 +8,9 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
+        <!-- <groupId>com.xuxueli</groupId>
+        <artifactId>xxl-job-executor-samples</artifactId>
+        <version>2.1.1</version> -->
     </parent>
     <artifactId>hip-analysis-job-executor</artifactId>
     <packaging>jar</packaging>

@@ -1,14 +1,14 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/xuxueli/xxl-job/master/doc/images/xxl-logo.jpg" width="150">
+    <img src="https://www.xuxueli.com/doc/static/xxl-job/images/xxl-logo.jpg" width="150">
     <h3 align="center">XXL-JOB</h3>
     <p align="center">
         XXL-JOB, a lightweight distributed task scheduling framework.
         <br>
-        <a href="http://www.xuxueli.com/xxl-job/"><strong>-- Home Page --</strong></a>
+        <a href="https://www.xuxueli.com/xxl-job/"><strong>-- Home Page --</strong></a>
         <br>
         <br>
-        <a href="https://travis-ci.org/xuxueli/xxl-job">
-            <img src="https://travis-ci.org/xuxueli/xxl-job.svg?branch=master" >
+        <a href="https://github.com/xuxueli/xxl-job/actions">
+            <img src="https://github.com/xuxueli/xxl-job/workflows/Java%20CI/badge.svg" >
         </a>
         <a href="https://hub.docker.com/r/xuxueli/xxl-job-admin/">
             <img src="https://img.shields.io/badge/docker-passing-brightgreen.svg" >
@@ -25,7 +25,7 @@
          <a href="https://gitter.im/xuxueli/xxl-job?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge">
               <img src="https://badges.gitter.im/xuxueli/xxl-job.svg" >
          </a>
-         <a href="http://www.xuxueli.com/page/donate.html">
+         <a href="https://www.xuxueli.com/page/donate.html">
                <img src="https://img.shields.io/badge/%24-donate-ff69b4.svg?style=flat-square" >
          </a>
     </p>    
@@ -41,12 +41,12 @@ XXL-JOB是一个轻量级分布式任务调度平台，其核心设计目标是�
 
 
 ## Documentation
-- [中文文档](http://www.xuxueli.com/xxl-job/)
-- [English Documentation](http://www.xuxueli.com/xxl-job/en/)
+- [中文文档](https://www.xuxueli.com/xxl-job/)
+- [English Documentation](https://www.xuxueli.com/xxl-job/en/)
 
 
 ## Communication    
-- [社区交流](http://www.xuxueli.com/page/community.html)
+- [社区交流](https://www.xuxueli.com/page/community.html)
 
 
 ## Features
@@ -359,6 +359,42 @@ XXL-JOB是一个轻量级分布式任务调度平台，其核心设计目标是�
     - 240、广州富力地产有限公司
     - 241、氢课（上海）教育科技有限公司
     - 242、武汉氪细胞网络技术有限公司
+    - 243、杭州有云科技有限公司
+    - 244、上海仙豆智能机器人有限公司
+    - 245、拉卡拉支付股份有限公司【拉卡拉】
+    - 246、虎彩印艺股份有限公司
+    - 247、北京数微科技有限公司
+    - 248、广东智瑞科技有限公司
+    - 249、找钢网
+    - 250、九机网
+    - 251、杭州跑跑网络科技有限公司
+    - 252、深圳未来云集
+    - 253、杭州每日给力科技有限公司
+    - 254、上海齐犇信息科技有限公司
+    - 255、滴滴出行【滴滴】
+    - 256、合肥云诊信息科技有限公司
+    - 257、云知声智能科技股份有限公司
+    - 258、南京坦道科技有限公司
+    - 259、爱乐优（二手平台）
+    - 260、猫眼电影（私有化部署）【猫眼电影】
+    - 261、美团大象（私有化部署）【美团大象】
+    - 262、作业帮教育科技（北京）有限公司【作业帮】
+    - 263、北京小年糕互联网技术有限公司
+    - 264、山东矩阵软件工程股份有限公司
+    - 265、陕西国驿软件科技有限公司
+    - 266、君开信息科技
+    - 267、村鸟网络科技有限责任公司
+    - 268、云南国际信托有限公司
+    - 269、金智教育
+    - 270、珠海市筑巢科技有限公司
+    - 271、上海百胜软件股份有限公司
+    - 272、深圳市科盾科技有限公司
+    - 273、哈啰出行【哈啰】
+    - 274、途虎养车【途虎】
+    - 275、卡思优派人力资源集团
+    - 276、南京观为智慧软件科技有限公司
+    - 277、杭州城市大脑科技有限公司
+    - 278、猿辅导【猿辅导】
 	- ……
 
 > 更多接入的公司，欢迎在 [登记地址](https://github.com/xuxueli/xxl-job/issues/1 ) 登记，登记仅仅为了产品推广。
@@ -382,6 +418,6 @@ This product is open source and free, and will continue to provide free communit
 
 
 ## Donate
-No matter how much the donation amount is enough to express your thought, thank you very much ：）     [To donate](http://www.xuxueli.com/page/donate.html )
+No matter how much the donation amount is enough to express your thought, thank you very much ：）     [To donate](https://www.xuxueli.com/page/donate.html )
 
-无论捐赠金额多少都足够表达您这份心意，非常感谢 ：）      [前往捐赠](http://www.xuxueli.com/page/donate.html )
+无论捐赠金额多少都足够表达您这份心意，非常感谢 ：）      [前往捐赠](https://www.xuxueli.com/page/donate.html )
