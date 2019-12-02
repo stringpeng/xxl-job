@@ -180,6 +180,12 @@
                             <textarea class="textarea form-control" name="executorParam" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_executorparam}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
 						</div>
                     </div>
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_remark}</label>
+                        <div class="col-sm-10">
+                            <textarea class="textarea form-control" name="remark" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_remark}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
+                        </div>
+                    </div>
 
                     <hr>
 					<div class="form-group">
@@ -376,8 +382,14 @@ exit 0
                             <textarea class="textarea form-control" name="executorParam" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_executorparam}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
 						</div>
                     </div>
+                    <div class="form-group">
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_remark}</label>
+                        <div class="col-sm-10">
+                            <textarea class="textarea form-control" name="remark" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_remark}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
+                        </div>
+                    </div>
 
-					<hr>
+                    <hr>
 					<div class="form-group">
                         <div class="col-sm-offset-3 col-sm-6">
 							<button type="submit" class="btn btn-primary"  >${I18n.system_save}</button>
