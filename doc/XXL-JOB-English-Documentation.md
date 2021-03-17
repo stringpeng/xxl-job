@@ -3,15 +3,19 @@
 [![Actions Status](https://github.com/xuxueli/xxl-job/workflows/Java%20CI/badge.svg)](https://github.com/xuxueli/xxl-job/actions)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.xuxueli/xxl-job/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.xuxueli/xxl-job/)
 [![GitHub release](https://img.shields.io/github/release/xuxueli/xxl-job.svg)](https://github.com/xuxueli/xxl-job/releases)
+[![GitHub stars](https://img.shields.io/github/stars/xuxueli/xxl-job)](https://github.com/xuxueli/xxl-job/)
+[![Docker Status](https://img.shields.io/docker/pulls/xuxueli/xxl-job-admin)](https://hub.docker.com/r/xuxueli/xxl-job-admin/)
 [![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
-[![Gitter](https://badges.gitter.im/xuxueli/xxl-job.svg)](https://gitter.im/xuxueli/xxl-job?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![donate](https://img.shields.io/badge/%24-donate-ff69b4.svg?style=flat-square)](https://www.xuxueli.com/page/donate.html)
+[![donate](https://img.shields.io/badge/%24-donate-ff69b4.svg?style=flat)](https://www.xuxueli.com/page/donate.html)
 
+[TOCM]
+
+[TOC]
 
 ## 1. Brief introduction
 
 ### 1.1 Overview
-XXL-JOB is a lightweight distributed task scheduling framework, the core design goal is to develop quickly, learning simple, lightweight, easy to expand. Is now open source and access to a number of companies online product line, download and use it now.
+XXL-JOB is a distributed task scheduling framework, the core design goal is to develop quickly, learning simple, lightweight, easy to expand. Is now open source and access to a number of companies online product line, download and use it now.
 
 > English document update slightly delayed, Please check the Chinese version for the latest document.
 
@@ -393,9 +397,8 @@ Source code is organized by maven,unzip it and structure is as follows:
     xxl-job-admin：schedule admin center
     xxl-job-core：public common dependent library
     xxl-job-executor：executor Sample(Select appropriate version of executor,Can be used directly,You can also refer to it and transform existing projects into executors）
-        ：xxl-job-executor-sample-spring：Spring version，executors managed by Spring，general and recommend;
+        ：xxl-job-executor-sample-spring：Spring version，executors managed by Spring，general and recommend;
         ：xxl-job-executor-sample-springboot：Springboot version，executors managed by Springboot;
-        ：xxl-job-executor-sample-jfinal：JFinal version，executors managed by JFinal;
 	
 ### 2.3 Configure and delploy "Schedule Center"	
 
@@ -412,7 +415,7 @@ The concrete contet describe as follows:
 
     ### JDBC connection info of schedule center：keep Consistent with chapter 2.1
     xxl.job.db.driverClass=com.mysql.jdbc.Driver
-    xxl.job.db.url=jdbc:mysql://localhost:3306/xxl-job?useUnicode=true&characterEncoding=UTF-8
+    xxl.job.db.url=jdbc:mysql://127.0.0.1:3306/xxl_job?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
     xxl.job.db.user=root
     xxl.job.db.password=root_pwd
     
@@ -500,7 +503,7 @@ Concrete contet describe as follows：
     <!-- executor port[required] -->
     <property name="port" value="${xxl.job.executor.port}" />
     <!-- executor AppName[required]，auto register will be closed if it blank -->
-    <property name="appName" value="${xxl.job.executor.appname}" />
+    <property name="appname" value="${xxl.job.executor.appname}" />
     <!-- register center address of executor [required]，auto register will be closed if it blank -->
     <property name="adminAddresses" value="${xxl.job.admin.addresses}" />
     <!-- log path of executor[required] -->
@@ -599,9 +602,7 @@ The task logic exist in the executor project as JobHandler,the develop steps as 
     - 1, create new java class implent com.xxl.job.core.handler.IJobHandler;
     - 2, if you add @Component annotation on the top of the class name it’s will be managed as a bean instance by spring container;
     - 3, add  “@JobHandler(value=" customize jobhandler name")” annotation，the value stand for JobHandler name,it will be used as JobHandler property when create a new task in the schedule center.
-    （go and see DemoJobHandler in the xxl-job-executor-example project, as shown below）
 
-![输入图片说明](https://www.xuxueli.com/doc/static/xxl-job/images/img_oLlM.png "在这里输入图片标题")
 
 #### Step 2:create task in schedule center
 If you want learn more about configure item please go and sedd “Description of configuration item”，select  "BEAN模式" as run mode，property JobHandler please fill in the value defined by @JobHande.
@@ -661,7 +662,7 @@ If you want to create a new executor,please click "+新增执行器" button:
 
 ### Description of executor attributes
 
-    AppName: the unique identity of the executor cluster,executor will registe automatically and periodically by appName so that it can be scheduled.
+    Appname: the unique identity of the executor cluster,executor will registe automatically and periodically by appname so that it can be scheduled.
     名称: the name of ther executor,it is used to describe the executor.
     排序: the order of executor,it will be used in the place where need to select executor.
     注册方式:which way the schedule center used to acquire executor address through;
@@ -972,7 +973,8 @@ When “分片广播” is selected as route policy in executor cluster, one tas
 
 The develop process of "分片广播" is the same as general task, The difference is that you can get slice parameters，code as shown below（go and see ShardingJobHandler in execuotr example ):
 
-    ShardingUtil.ShardingVO shardingVO = ShardingUtil.getShardingVo();
+    int shardIndex = XxlJobContext.getXxlJobContext().getShardIndex();
+    int shardTotal = XxlJobContext.getXxlJobContext().getShardTotal();
     
 This slice parameter object has two properties:
 
