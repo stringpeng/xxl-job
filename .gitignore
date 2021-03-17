@@ -9,3 +9,5 @@ xxl-job-admin/.settings
 xxl-job-admin/.vscode
 xxl-job-executor-samples/xxl-job-executor-sample-springboot/logs
 *.log
+.settings
+*.zip
