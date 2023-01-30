@@ -1,0 +1,67 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "byte": 1048576
+            },
+            "errorLimit": {
+                "record": 0,
+                "percentage": 0.02
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "mysqlreader",
+                    "parameter": {
+                        "username": "root",
+                        "password": "HYWWszy123.",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "select 
+UUID() as ID, 
+a.BAZA01 as ba, 
+right(left(BAZA01,5),1) as orgid, 
+right(BAZA01,11) as zyh, 
+right(BAZA01,1) as zycs, 
+a.BAZAF6 as dqbm, 
+a.BAZAF7 as dz,
+a.BAZA24 as ryrq,
+a.BAZA27 as cyrq  
+from BAZA a where a.BAZA27 >= ''
+and a.BAZA27 < '2022-11-25'
+and a.BAZAF6 not like '4201%';"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:mysql://10.1.10.86:3306/wszhtj"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "oraclewriter",
+                    "parameter": {
+                        "username": "sinosoft_rhin",
+                        "password": "sinosoft",
+                        "column": [
+                            "ID","BA","ORGID","zyh","zycs","dqbm","dz","ryrq","cyrq"
+                        ],
+                        "preSql": [
+                            "DELETE FROM BI_BA WHERE cyrq >= to_date('', 'yyyy-mm-dd') and cyrq < to_date('2022-11-25', 'yyyy-mm-dd')"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl":  "jdbc:oracle:thin:@10.18.103.180:1521/orcl",
+                                "table": [
+                                    "BI_BA"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

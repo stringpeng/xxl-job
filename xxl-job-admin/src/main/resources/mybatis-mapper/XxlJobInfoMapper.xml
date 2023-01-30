@@ -36,6 +36,22 @@
 		<result column="trigger_status" property="triggerStatus" />
 		<result column="trigger_last_time" property="triggerLastTime" />
 		<result column="trigger_next_time" property="triggerNextTime" />
+
+		<result column="datax_type" property="dataxType" />
+		<result column="datax_src_db" property="dataxSrcDb" />
+		<result column="datax_src_host" property="dataxSrcHost" />
+		<result column="datax_src_port" property="dataxSrcPort" />
+		<result column="datax_src_username" property="dataxSrcUsername" />
+		<result column="datax_src_password" property="dataxSrcPassword" />
+		<result column="datax_tar_host" property="dataxTarHost" />
+		<result column="datax_tar_port" property="dataxTarPort" />
+		<result column="datax_tar_username" property="dataxTarUsername" />
+		<result column="datax_tar_password" property="dataxTarPassword" />
+		<result column="datax_tar_db" property="dataxTarDb" />
+		<result column="datax_tar_table" property="dataxTarTable" />
+		<result column="datax_tar_fields" property="dataxTarFields" />
+		<result column="datax_tar_pre_sql" property="dataxTarPreSql" />
+		<result column="datax_src_sql" property="dataxSrcSql" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -65,9 +81,53 @@
 		t.trigger_next_time
 	</sql>
 
+	<sql id="DataX_Column_List">
+		t.id,
+		t.job_group,
+		t.job_desc,
+		t.add_time,
+		t.update_time,
+		t.author,
+		t.alarm_email,
+		t.schedule_type,
+		t.schedule_conf,
+		t.misfire_strategy,
+		t.executor_route_strategy,
+		t.executor_handler,
+		t.executor_param,
+		t.executor_block_strategy,
+		t.executor_timeout,
+		t.executor_fail_retry_count,
+		t.glue_type,
+		t.glue_source,
+		t.glue_remark,
+		t.glue_updatetime,
+		t.child_jobid,
+		t.trigger_status,
+		t.trigger_last_time,
+		t.trigger_next_time,
+
+		t2.datax_type,
+		t2.datax_src_db,
+		t2.datax_src_host,
+		t2.datax_src_port,
+		t2.datax_src_username,
+		t2.datax_src_password,
+		t2.datax_tar_host,
+		t2.datax_tar_port,
+		t2.datax_tar_username,
+		t2.datax_tar_password,
+		t2.datax_tar_db,
+		t2.datax_tar_table,
+		t2.datax_tar_fields,
+		t2.datax_tar_pre_sql,
+		t2.datax_src_sql
+	</sql>
+
 	<select id="pageList" parameterType="java.util.HashMap" resultMap="XxlJobInfo">
-		SELECT <include refid="Base_Column_List" />
+		SELECT <include refid="DataX_Column_List" />
 		FROM xxl_job_info AS t
+		LEFT JOIN xxl_job_info_datax AS t2 on t.id = t2.id
 		<trim prefix="WHERE" prefixOverrides="AND | OR" >
 			<if test="jobGroup gt 0">
 				AND t.job_group = #{jobGroup}
@@ -168,8 +228,9 @@
 	</insert>
 
 	<select id="loadById" parameterType="java.util.HashMap" resultMap="XxlJobInfo">
-		SELECT <include refid="Base_Column_List" />
+		SELECT <include refid="DataX_Column_List" />
 		FROM xxl_job_info AS t
+		LEFT JOIN xxl_job_info_datax AS t2 on t.id = t2.id
 		WHERE t.id = #{id}
 	</select>
 

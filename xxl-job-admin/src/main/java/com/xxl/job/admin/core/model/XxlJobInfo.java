@@ -7,9 +7,7 @@ import java.util.Date;
  *
  * @author xuxueli  2016-1-12 18:25:49
  */
-public class XxlJobInfo {
-	
-	private int id;				// 主键ID
+public class XxlJobInfo extends XxlJobInfoDataxExt {
 	
 	private int jobGroup;		// 执行器主键ID
 	private String jobDesc;
@@ -42,14 +40,6 @@ public class XxlJobInfo {
 	private long triggerLastTime;	// 上次调度时间
 	private long triggerNextTime;	// 下次调度时间
 
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public int getJobGroup() {
 		return jobGroup;

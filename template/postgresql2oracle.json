@@ -1,0 +1,56 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "byte": 1048576
+            },
+            "errorLimit": {
+                "record": 0,
+                "percentage": 0.02
+            }
+        },
+        "content": [
+            {
+                "reader": { 
+                    "name": "postgresqlreader",
+                    "parameter": {
+                        "username": "${SRC_USER_NAME}",
+                        "password": "${SRC_USER_PWD}",
+						"where": "",
+                        "connection": [
+                            {   
+                                "querySql": [
+                                    "${SRC_SQL}"
+                                ],
+                                "jdbcUrl": [
+                                    "jdbc:postgresql://${SRC_HOST_IP}:${SRC_HOST_PORT}/${SRC_DB}"
+                                ]
+                            }
+                        ]
+                    }
+                },			
+                "writer": {
+                    "name": "oraclewriter",
+                    "parameter": {
+                        "username": "${TAR_USER_NAME}",
+                        "password": "${TAR_USER_PWD}",
+                        "column": [
+                            ${fields_map}
+                        ],
+                        "preSql": [
+                            "${TAR_PRE_SQL}"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl":  "jdbc:oracle:thin:@${TAR_HOST_IP}:${TAR_HOST_PORT}/${TAR_DB}",
+                                "table": [
+                                    "${TAR_TABLENAME}"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

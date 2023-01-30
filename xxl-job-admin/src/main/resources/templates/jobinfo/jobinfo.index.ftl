@@ -184,7 +184,88 @@
                     <div class="form-group">
                         <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorparam}<font color="black">*</font></label>
                         <div class="col-sm-10">
-                            <textarea class="textarea form-control" name="executorParam" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_executorparam}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
+                            <textarea class="textarea form-control" name="executorParam" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_executorparam}" maxlength="512" style="height: 63px; line-height: 1.2; max-width: 100%;"></textarea>
+                        </div>
+                    </div>
+
+                    <div id="datax_config" style="display:none;">
+                        <br>
+                        <p style="margin: 0 0 10px;text-align: left;border-bottom: 1px solid #e5e5e5;color: gray;">${I18n.jobinfo_conf_datax}</p>    <#-- DataX配置 -->
+                        <div class="form-group">
+                            <label for="dataxType" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_type}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="dataxType" >
+                                    <#list DataTransferTypeEnum as item>
+                                        <option value="${item}" >${item.title}</option>
+                                    </#list>
+                                </select>
+                            </div>
+
+                            <label for="dataxSrcDb" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_db}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxSrcDb" placeholder="${I18n.jobinfo_field_datax_src_db}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxSrcHost" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_host}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="dataxSrcHost" placeholder="${I18n.jobinfo_field_datax_src_host}" maxlength="100" >
+                            </div>
+
+                            <label for="dataxSrcPort" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_port}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxSrcPort" placeholder="${I18n.jobinfo_field_datax_src_port}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxSrcUsername" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_username}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="dataxSrcUsername" placeholder="${I18n.jobinfo_field_datax_src_username}" maxlength="100" >
+                            </div>
+
+                            <label for="dataxSrcPassword" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_password}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxSrcPassword" placeholder="${I18n.jobinfo_field_datax_src_password}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxTarHost" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_host}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="dataxTarHost" placeholder="${I18n.jobinfo_field_datax_tar_host}" maxlength="100" >
+                            </div>
+
+                            <label for="dataxTarPort" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_port}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxTarPort" placeholder="${I18n.jobinfo_field_datax_tar_port}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxTarUsername" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_username}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="dataxTarUsername" placeholder="${I18n.jobinfo_field_datax_tar_username}" maxlength="100" >
+                            </div>
+
+                            <label for="dataxTarPassword" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_password}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxTarPassword" placeholder="${I18n.jobinfo_field_datax_tar_password}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxTarDb" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_db}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="dataxTarDb" placeholder="${I18n.jobinfo_field_datax_tar_db}" maxlength="100" >
+                            </div>
+
+                            <label for="dataxTarTable" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_table}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxTarTable" placeholder="${I18n.jobinfo_field_datax_tar_table}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxTarFields" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_fields}<font color="red">*</font></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="dataxTarFields" placeholder="${I18n.jobinfo_field_datax_tar_fields_placeholder}" maxlength="100" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxTarPreSql" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_pre_sql}<font color="black">*</font></label>
+                            <div class="col-sm-10">
+                                <textarea class="textarea form-control" name="dataxTarPreSql" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_datax_tar_pre_sql}" style="height: 63px; line-height: 1.2; max-width: 100%;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxSrcSql" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_sql}<font color="red">*</font></label>
+                            <div class="col-sm-10">
+                                <textarea class="textarea form-control" name="dataxSrcSql" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_datax_src_sql}" style="height: 63px; line-height: 1.2;  max-width: 100%;"></textarea>
+                            </div>
                         </div>
                     </div>
 
@@ -362,7 +443,7 @@ exit 0
 
                     <p style="margin: 0 0 10px;text-align: left;border-bottom: 1px solid #e5e5e5;color: gray;">${I18n.jobinfo_conf_base}</p>    <#-- 基础信息 -->
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_jobgroup}<font color="red">*</font></label>
+                        <label for="jobGroup" class="col-sm-2 control-label">${I18n.jobinfo_field_jobgroup}<font color="red">*</font></label>
                         <div class="col-sm-4">
                             <select class="form-control" name="jobGroup" >
                                 <#list JobGroupList as group>
@@ -371,20 +452,20 @@ exit 0
                             </select>
                         </div>
 
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_jobdesc}<font color="red">*</font></label>
+                        <label for="jobDesc" class="col-sm-2 control-label">${I18n.jobinfo_field_jobdesc}<font color="red">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="jobDesc" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_jobdesc}" maxlength="50" ></div>
                     </div>
                     <div class="form-group">
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_author}<font color="red">*</font></label>
+                        <label for="author" class="col-sm-2 control-label">${I18n.jobinfo_field_author}<font color="red">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="author" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_author}" maxlength="50" ></div>
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_alarmemail}<font color="black">*</font></label>
+                        <label for="alarmEmail" class="col-sm-2 control-label">${I18n.jobinfo_field_alarmemail}<font color="black">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="alarmEmail" placeholder="${I18n.jobinfo_field_alarmemail_placeholder}" maxlength="100" ></div>
                     </div>
 
                     <br>
                     <p style="margin: 0 0 10px;text-align: left;border-bottom: 1px solid #e5e5e5;color: gray;">${I18n.jobinfo_conf_schedule}</p>    <#-- 调度配置 -->
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.schedule_type}<font color="red">*</font></label>
+                        <label for="scheduleType" class="col-sm-2 control-label">${I18n.schedule_type}<font color="red">*</font></label>
                         <div class="col-sm-4">
                             <select class="form-control scheduleType" name="scheduleType" >
                                 <#list ScheduleTypeEnum as item>
@@ -397,15 +478,15 @@ exit 0
                         <div class="schedule_conf schedule_conf_NONE" style="display: none" >
                         </div>
                         <div class="schedule_conf schedule_conf_CRON" >
-                            <label for="lastname" class="col-sm-2 control-label">Cron<font color="red">*</font></label>
+                            <label for="schedule_conf_CRON" class="col-sm-2 control-label">Cron<font color="red">*</font></label>
                             <div class="col-sm-4"><input type="text" class="form-control" name="schedule_conf_CRON" placeholder="${I18n.system_please_input}Cron" maxlength="128" ></div>
                         </div>
                         <div class="schedule_conf schedule_conf_FIX_RATE" style="display: none" >
-                            <label for="lastname" class="col-sm-2 control-label">${I18n.schedule_type_fix_rate}<font color="red">*</font></label>
+                            <label for="schedule_conf_FIX_RATE" class="col-sm-2 control-label">${I18n.schedule_type_fix_rate}<font color="red">*</font></label>
                             <div class="col-sm-4"><input type="text" class="form-control" name="schedule_conf_FIX_RATE" placeholder="${I18n.system_please_input} （ Second ）" maxlength="10" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ></div>
                         </div>
                         <div class="schedule_conf schedule_conf_FIX_DELAY" style="display: none" >
-                            <label for="lastname" class="col-sm-2 control-label">${I18n.schedule_type_fix_delay}<font color="red">*</font></label>
+                            <label for="schedule_conf_FIX_DELAY" class="col-sm-2 control-label">${I18n.schedule_type_fix_delay}<font color="red">*</font></label>
                             <div class="col-sm-4"><input type="text" class="form-control" name="schedule_conf_FIX_DELAY" placeholder="${I18n.system_please_input} （ Second ）" maxlength="10" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" ></div>
                         </div>
                     </div>
@@ -414,7 +495,7 @@ exit 0
                     <p style="margin: 0 0 10px;text-align: left;border-bottom: 1px solid #e5e5e5;color: gray;">${I18n.jobinfo_conf_job}</p>    <#-- 任务配置 -->
 
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_gluetype}<font color="red">*</font></label>
+                        <label for="glueType" class="col-sm-2 control-label">${I18n.jobinfo_field_gluetype}<font color="red">*</font></label>
                         <div class="col-sm-4">
                             <select class="form-control glueType" name="glueType" disabled >
                                 <#list GlueTypeEnum as item>
@@ -422,16 +503,98 @@ exit 0
                                 </#list>
                             </select>
                         </div>
-                        <label for="firstname" class="col-sm-2 control-label">JobHandler<font color="red">*</font></label>
+                        <label for="executorHandler" class="col-sm-2 control-label">JobHandler<font color="red">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="executorHandler" placeholder="${I18n.system_please_input}JobHandler" maxlength="100" ></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorparam}<font color="black">*</font></label>
+                        <label for="executorParam" class="col-sm-2 control-label">${I18n.jobinfo_field_executorparam}<font color="black">*</font></label>
                         <div class="col-sm-10">
                             <textarea class="textarea form-control" name="executorParam" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_executorparam}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
                         </div>
                     </div>
+
+                    <div id="datax_config" style="display:none;">
+                        <br>
+                        <p style="margin: 0 0 10px;text-align: left;border-bottom: 1px solid #e5e5e5;color: gray;">${I18n.jobinfo_conf_datax}</p>    <#-- DataX配置 -->
+                        <div class="form-group">
+                            <label for="dataxType" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_type}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="dataxType" >
+                                    <#list DataTransferTypeEnum as item>
+                                        <option value="${item}" >${item.title}</option>
+                                    </#list>
+                                </select>
+                            </div>
+
+                            <label for="dataxSrcDb" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_db}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxSrcDb" placeholder="${I18n.jobinfo_field_datax_src_db}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxSrcHost" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_host}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="dataxSrcHost" placeholder="${I18n.jobinfo_field_datax_src_host}" maxlength="100" >
+                            </div>
+
+                            <label for="dataxSrcPort" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_port}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxSrcPort" placeholder="${I18n.jobinfo_field_datax_src_port}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxSrcUsername" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_username}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="dataxSrcUsername" placeholder="${I18n.jobinfo_field_datax_src_username}" maxlength="100" >
+                            </div>
+
+                            <label for="dataxSrcPassword" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_password}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxSrcPassword" placeholder="${I18n.jobinfo_field_datax_src_password}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxTarHost" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_host}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="dataxTarHost" placeholder="${I18n.jobinfo_field_datax_tar_host}" maxlength="100" >
+                            </div>
+
+                            <label for="dataxTarPort" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_port}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxTarPort" placeholder="${I18n.jobinfo_field_datax_tar_port}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxTarUsername" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_username}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="dataxTarUsername" placeholder="${I18n.jobinfo_field_datax_tar_username}" maxlength="100" >
+                            </div>
+
+                            <label for="dataxTarPassword" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_password}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxTarPassword" placeholder="${I18n.jobinfo_field_datax_tar_password}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxTarDb" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_db}<font color="red">*</font></label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="dataxTarDb" placeholder="${I18n.jobinfo_field_datax_tar_db}" maxlength="100" >
+                            </div>
+
+                            <label for="dataxTarTable" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_table}<font color="red">*</font></label>
+                            <div class="col-sm-4"><input type="text" class="form-control" name="dataxTarTable" placeholder="${I18n.jobinfo_field_datax_tar_table}" maxlength="100" ></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxTarFields" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_fields}<font color="red">*</font></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="dataxTarFields" placeholder="${I18n.jobinfo_field_datax_tar_fields_placeholder}" maxlength="100" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxTarPreSql" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_tar_pre_sql}<font color="black">*</font></label>
+                            <div class="col-sm-10">
+                                <textarea class="textarea form-control" name="dataxTarPreSql" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_datax_tar_pre_sql}" style="height: 63px; line-height: 1.2; max-width: 100%;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dataxSrcSql" class="col-sm-2 control-label">${I18n.jobinfo_field_datax_src_sql}<font color="red">*</font></label>
+                            <div class="col-sm-10">
+                                <textarea class="textarea form-control" name="dataxSrcSql" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_datax_src_sql}" style="height: 63px; line-height: 1.2;  max-width: 100%;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <br>
                     <p style="margin: 0 0 10px;text-align: left;border-bottom: 1px solid #e5e5e5;color: gray;">${I18n.jobinfo_conf_advanced}</p>    <#-- 高级配置 -->

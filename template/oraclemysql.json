@@ -1,0 +1,56 @@
+{
+    "job": {
+        "setting": {
+            "speed": {
+                "byte": 1048576
+            },
+            "errorLimit": {
+                "record": 0,
+                "percentage": 0.02
+            }
+        },
+        "content": [
+            {
+                "reader": {
+                    "name": "oraclereader",
+                    "parameter": {
+                        "username": "${SRC_USER_NAME}",
+                        "password": "${SRC_USER_PWD}",
+                        "where": "",
+                        "connection": [
+                            {
+                                "querySql": [
+                                    "${SRC_SQL}"
+                                ],
+                                "jdbcUrl": [
+									"jdbc:oracle:thin:@${SRC_HOST_IP}:${SRC_PORT}/${SRC_DB}"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "writer": {
+                    "name": "mysqlwriter",
+                    "parameter": {
+                        "username": "${TAR_USER_NAME}",
+                        "password": "${TAR_USER_PWD}",
+                        "column": [
+                            ${fields_map}
+                        ],
+                        "preSql": [
+                            "${TAR_PRE_SQL}"
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl":  "jdbc:mysql://${TAR_HOST_IP}:${TAR_HOST_PORT}/${TAR_DB}?Unicode=true&characterEncoding=UTF-8&useSSL=false",
+                                "table": [
+                                    "${TAR_TABLENAME}"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -501,6 +501,7 @@ $(function() {
     $(".glueType").change(function(){
 		// executorHandler
         var $executorHandler = $(this).parents("form").find("input[name='executorHandler']");
+        var $dataxConfig = $(this).parents("form").find("#datax_config");
         var glueType = $(this).val();
         if ('BEAN' != glueType) {
             $executorHandler.val("");
@@ -508,6 +509,14 @@ $(function() {
         } else {
             $executorHandler.removeAttr("readonly");
         }
+
+        if ('DATAX' == glueType) {
+			$executorHandler.val("DataXHandler");
+			$executorHandler.attr("readonly","readonly");
+			$dataxConfig.css("display", "block");
+		}else {
+			$dataxConfig.css("display", "none");
+		}
     });
 
 	$("#addModal .glueType").change(function(){
@@ -576,6 +585,28 @@ $(function() {
 		$('#updateModal .form select[name=executorBlockStrategy] option[value='+ row.executorBlockStrategy +']').prop('selected', true);
 		$("#updateModal .form input[name='executorTimeout']").val( row.executorTimeout );
         $("#updateModal .form input[name='executorFailRetryCount']").val( row.executorFailRetryCount );
+
+        // fill datax
+        if("DATAX" == row.glueType) {
+            $('#updateModal .form select[name=dataxType] option[value='+ row.dataxType +']').prop('selected', true);
+            $("#updateModal .form input[name='dataxSrcDb']").val( row.dataxSrcDb );
+            $("#updateModal .form input[name='dataxSrcHost']").val( row.dataxSrcHost );
+            $("#updateModal .form input[name='dataxSrcPort']").val( row.dataxSrcPort );
+            $("#updateModal .form input[name='dataxSrcUsername']").val( row.dataxSrcUsername );
+            $("#updateModal .form input[name='dataxSrcPassword']").val( row.dataxSrcPassword );
+            $("#updateModal .form input[name='dataxTarHost']").val( row.dataxTarHost );
+            $("#updateModal .form input[name='dataxTarPort']").val( row.dataxTarPort );
+            $("#updateModal .form input[name='dataxTarUsername']").val( row.dataxTarUsername );
+            $("#updateModal .form input[name='dataxTarPassword']").val( row.dataxTarPassword );
+            $("#updateModal .form input[name='dataxTarDb']").val( row.dataxTarDb );
+            $("#updateModal .form input[name='dataxTarTable']").val( row.dataxTarTable );
+            $("#updateModal .form input[name='dataxTarFields']").val( row.dataxTarFields );
+            $("#updateModal .form textarea[name='dataxTarPreSql']").val( row.dataxTarPreSql );
+            $("#updateModal .form textarea[name='dataxSrcSql']").val( row.dataxSrcSql );
+
+            $("#updateModal .form select[name=dataxType]").change();
+
+        }
 
 		// show
 		$('#updateModal').modal({backdrop: false, keyboard: false}).modal('show');

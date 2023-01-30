@@ -3,6 +3,7 @@ package com.xxl.job.admin.service.impl;
 import com.xxl.job.admin.core.cron.CronExpression;
 import com.xxl.job.admin.core.model.XxlJobGroup;
 import com.xxl.job.admin.core.model.XxlJobInfo;
+import com.xxl.job.admin.core.model.XxlJobInfoDataxExt;
 import com.xxl.job.admin.core.model.XxlJobLogReport;
 import com.xxl.job.admin.core.route.ExecutorRouteStrategyEnum;
 import com.xxl.job.admin.core.scheduler.MisfireStrategyEnum;
@@ -18,6 +19,7 @@ import com.xxl.job.core.util.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.text.MessageFormat;
@@ -41,6 +43,8 @@ public class XxlJobServiceImpl implements XxlJobService {
 	private XxlJobLogGlueDao xxlJobLogGlueDao;
 	@Resource
 	private XxlJobLogReportDao xxlJobLogReportDao;
+	@Resource
+	private XxlJobInfoDataxDao xxlJobInfoDataxDao;
 	
 	@Override
 	public Map<String, Object> pageList(int start, int length, int jobGroup, int triggerStatus, String jobDesc, String executorHandler, String author) {
@@ -58,6 +62,7 @@ public class XxlJobServiceImpl implements XxlJobService {
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public ReturnT<String> add(XxlJobInfo jobInfo) {
 
 		// valid base
@@ -149,6 +154,9 @@ public class XxlJobServiceImpl implements XxlJobService {
 		jobInfo.setUpdateTime(new Date());
 		jobInfo.setGlueUpdatetime(new Date());
 		xxlJobInfoDao.save(jobInfo);
+		if(GlueTypeEnum.DATAX.name().equals(jobInfo.getGlueType())) {
+			xxlJobInfoDataxDao.save(jobInfo);
+		}
 		if (jobInfo.getId() < 1) {
 			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_add")+I18nUtil.getString("system_fail")) );
 		}
@@ -166,6 +174,7 @@ public class XxlJobServiceImpl implements XxlJobService {
 	}
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public ReturnT<String> update(XxlJobInfo jobInfo) {
 
 		// valid base
@@ -281,8 +290,16 @@ public class XxlJobServiceImpl implements XxlJobService {
 		exists_jobInfo.setTriggerNextTime(nextTriggerTime);
 
 		exists_jobInfo.setUpdateTime(new Date());
-        xxlJobInfoDao.update(exists_jobInfo);
+		xxlJobInfoDao.update(exists_jobInfo);
 
+		if(GlueTypeEnum.DATAX.name().equals(jobInfo.getGlueType())) {
+			XxlJobInfoDataxExt exists_xxlJobInfoDataxExt = xxlJobInfoDataxDao.loadById(exists_jobInfo.getId());
+			if (null == exists_xxlJobInfoDataxExt) {
+				xxlJobInfoDataxDao.save(jobInfo);
+			} else {
+				xxlJobInfoDataxDao.update(jobInfo);
+			}
+		}
 
 		return ReturnT.SUCCESS;
 	}
@@ -295,6 +312,7 @@ public class XxlJobServiceImpl implements XxlJobService {
 		}
 
 		xxlJobInfoDao.delete(id);
+		xxlJobInfoDataxDao.delete(id);
 		xxlJobLogDao.delete(id);
 		xxlJobLogGlueDao.deleteByJobId(id);
 		return ReturnT.SUCCESS;

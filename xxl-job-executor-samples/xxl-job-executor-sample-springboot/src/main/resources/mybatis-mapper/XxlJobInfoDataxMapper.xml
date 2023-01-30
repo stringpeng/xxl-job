@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxl.job.executor.dao.XxlJobInfoDataxDao">
+
+	<resultMap id="XxlJobInfoDataX" type="com.xxl.job.executor.core.model.XxlJobInfoDataxExt" >
+		<result column="id" property="id" />
+		<result column="datax_type" property="dataxType" />
+		<result column="datax_src_db" property="dataxSrcDb" />
+		<result column="datax_src_host" property="dataxSrcHost" />
+		<result column="datax_src_port" property="dataxSrcPort" />
+		<result column="datax_src_username" property="dataxSrcUsername" />
+		<result column="datax_src_password" property="dataxSrcPassword" />
+		<result column="datax_tar_host" property="dataxTarHost" />
+		<result column="datax_tar_port" property="dataxTarPort" />
+		<result column="datax_tar_username" property="dataxTarUsername" />
+		<result column="datax_tar_password" property="dataxTarPassword" />
+		<result column="datax_tar_db" property="dataxTarDb" />
+		<result column="datax_tar_table" property="dataxTarTable" />
+		<result column="datax_tar_fields" property="dataxTarFields" />
+		<result column="datax_tar_pre_sql" property="dataxTarPreSql" />
+		<result column="datax_src_sql" property="dataxSrcSql" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		t.id,
+		t.datax_type,
+		t.datax_src_db,
+		t.datax_src_host,
+		t.datax_src_port,
+		t.datax_src_username,
+		t.datax_src_password,
+		t.datax_tar_host,
+		t.datax_tar_port,
+		t.datax_tar_username,
+		t.datax_tar_password,
+		t.datax_tar_db,
+		t.datax_tar_table,
+		t.datax_tar_fields,
+		t.datax_tar_pre_sql,
+		t.datax_src_sql
+	</sql>
+
+	<insert id="save" parameterType="com.xxl.job.executor.core.model.XxlJobInfoDataxExt">
+		INSERT INTO xxl_job_info_datax (
+			id,
+			datax_type,
+			datax_src_db,
+			datax_src_host,
+			datax_src_port,
+			datax_src_username,
+			datax_src_password,
+			datax_tar_host,
+			datax_tar_port,
+			datax_tar_username,
+			datax_tar_password,
+			datax_tar_db,
+			datax_tar_table,
+			datax_tar_fields,
+			datax_tar_pre_sql,
+			datax_src_sql
+		) VALUES (
+			#{id},
+			#{dataxType, jdbcType=VARCHAR},
+			#{dataxSrcDb, jdbcType=VARCHAR},
+			#{dataxSrcHost, jdbcType=VARCHAR},
+			#{dataxSrcPort, jdbcType=VARCHAR},
+			#{dataxSrcUsername, jdbcType=VARCHAR},
+			#{dataxSrcPassword, jdbcType=VARCHAR},
+			#{dataxTarHost, jdbcType=VARCHAR},
+			#{dataxTarPort, jdbcType=VARCHAR},
+			#{dataxTarUsername, jdbcType=VARCHAR},
+			#{dataxTarPassword, jdbcType=VARCHAR},
+			#{dataxTarDb, jdbcType=VARCHAR},
+			#{dataxTarTable, jdbcType=VARCHAR},
+			#{dataxTarFields, jdbcType=VARCHAR},
+			#{dataxTarPreSql, jdbcType=VARCHAR},
+			#{dataxSrcSql, jdbcType=VARCHAR}
+		);
+	</insert>
+
+	<update id="update" parameterType="com.xxl.job.executor.core.model.XxlJobInfoDataxExt" >
+		UPDATE xxl_job_info_datax
+		SET
+			datax_type = #{dataxType, jdbcType=VARCHAR},
+			datax_src_db = #{dataxSrcDb, jdbcType=VARCHAR},
+			datax_src_host = #{dataxSrcHost, jdbcType=VARCHAR},
+			datax_src_port = #{dataxSrcPort, jdbcType=VARCHAR},
+			datax_src_username = #{dataxSrcUsername, jdbcType=VARCHAR},
+			datax_src_password = #{dataxSrcPassword, jdbcType=VARCHAR},
+			datax_tar_host = #{dataxTarHost, jdbcType=VARCHAR},
+			datax_tar_port = #{dataxTarPort, jdbcType=VARCHAR},
+			datax_tar_username = #{dataxTarUsername, jdbcType=VARCHAR},
+			datax_tar_password = #{dataxTarPassword, jdbcType=VARCHAR},
+			datax_tar_db = #{dataxTarDb, jdbcType=VARCHAR},
+			datax_tar_table = #{dataxTarTable, jdbcType=VARCHAR},
+			datax_tar_fields = #{dataxTarFields, jdbcType=VARCHAR},
+			datax_tar_pre_sql = #{dataxTarPreSql, jdbcType=VARCHAR},
+			datax_src_sql = #{dataxSrcSql, jdbcType=VARCHAR}
+		WHERE id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="java.util.HashMap">
+		DELETE
+		FROM xxl_job_info_datax
+		WHERE id = #{id}
+	</delete>
+
+	<select id="loadById" parameterType="java.util.HashMap" resultMap="XxlJobInfoDataX">
+		SELECT <include refid="Base_Column_List" />
+		FROM xxl_job_info_datax AS t
+		WHERE t.id = #{id}
+	</select>
+
+</mapper>
